@@ -9,8 +9,13 @@ pip install django
 Configure your database in settings.py
 Then run the following commands :
 
+
 python manage.py makemigrations
+
 python manage.py migrate
+
 python manage.py createsuperuser
+
 python manage.py runserver
+
 Open localhost:8000 on your browser to view the app
