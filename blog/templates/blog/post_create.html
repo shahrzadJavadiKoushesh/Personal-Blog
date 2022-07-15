@@ -12,15 +12,16 @@
                     <h3>Add new Post:</h3>
                     <form method="POST">
                         {% csrf_token %}
-                        <div class="form-group py-2">
-                            <label class="py-1">Enter post title</label>
-                            <input type="text" class="form-control" placeholder="e.g. Some Title" name="title">
-                        </div>
-                        <div class="form-group py-2">
-                            <label class="py-1">Enter post text:</label>
-                            <textarea class="form-control" name="text" rows="8"
-                                      placeholder="Enter your post text here..."></textarea>
-                        </div>
+                        {{ form }}
+{#                        <div class="form-group py-2">#}
+{#                            <label class="py-1">Enter post title</label>#}
+{#                            <input type="text" class="form-control" placeholder="e.g. Some Title" name="title">#}
+{#                        </div>#}
+{#                        <div class="form-group py-2">#}
+{#                            <label class="py-1">Enter post text:</label>#}
+{#                            <textarea class="form-control" name="text" rows="8"#}
+{#                                      placeholder="Enter your post text here..."></textarea>#}
+{#                        </div>#}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
