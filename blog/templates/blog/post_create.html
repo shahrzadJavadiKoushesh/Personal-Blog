@@ -11,6 +11,7 @@
                 <div class="card shadow my-3 p-5">
                     <h3>Add new Post:</h3>
                     <form method="POST">
+                        {% csrf_token %}
                         <div class="form-group py-2">
                             <label class="py-1">Enter post title</label>
                             <input type="text" class="form-control" placeholder="e.g. Some Title" name="title">
