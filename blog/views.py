@@ -21,16 +21,14 @@ def post_create_view(request):
         if form.is_valid():
             form.save()
             return redirect('posts_list')
-    else: # GET request
+    else:  # GET request
         form = NewPostForm()
     return render(request, 'blog/post_create.html', context={'form': form})
-    # written without model forms :
-    # if request.method == 'POST':
-    #     post_title = request.POST.get('title')
-    #     post_text = request.POST.get('text')
-    #     # django ORM
-    #     sample_user = User.objects.all()[0]
-    #     Post.objects.create(title=post_title, text=post_text, author=sample_user, status='pub')
-    # else:
-    #     print("GET request")
-    # return render(request, 'blog/post_create.html')
+
+
+def post_update_view(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    form = NewPostForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+    return render(request, 'blog/post_create.html', context={'form': form})
