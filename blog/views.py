@@ -31,4 +31,5 @@ def post_update_view(request, pk):
     form = NewPostForm(request.POST or None, instance=post)
     if form.is_valid():
         form.save()
+        return redirect('posts_list')
     return render(request, 'blog/post_create.html', context={'form': form})
