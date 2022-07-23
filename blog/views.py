@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 
-from .forms import NewPostForm
+from .forms import PostForm
 from .models import Post
 from django.views import generic
 from django.urls import reverse_lazy
@@ -45,7 +45,7 @@ class PostDetailView(generic.DetailView):
 # class-based view for post_create_view method
 class PostCreateView(generic.CreateView):
     model = Post
-    form_class = NewPostForm  # no () as we need a class not an object
+    form_class = PostForm  # no () as we need a class not an object
     template_name = 'blog/post_create.html'
 
 
@@ -59,7 +59,7 @@ class PostCreateView(generic.CreateView):
 
 # class-based view for post_update_view method
 class PostUpdateView(generic.UpdateView):
-    form_class = NewPostForm
+    form_class = PostForm
     template_name = 'blog/post_create.html'
     model = Post
 
