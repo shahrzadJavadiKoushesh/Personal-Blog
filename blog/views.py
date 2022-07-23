@@ -31,15 +31,21 @@ class PostDetailView(generic.DetailView):
     context_object_name = 'post'
 
 
-def post_create_view(request):
-    if request.method == 'POST':
-        form = NewPostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('posts_list')
-    else:  # GET request
-        form = NewPostForm()
-    return render(request, 'blog/post_create.html', context={'form': form})
+# def post_create_view(request):
+#     if request.method == 'POST':
+#         form = NewPostForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('posts_list')
+#     else:  # GET request
+#         form = NewPostForm()
+#     return render(request, 'blog/post_create.html', context={'form': form})
+
+
+class PostCreateView(generic.CreateView):
+    model = Post
+    form_class = NewPostForm  # no () as we need a class not an object
+    template_name = 'blog/post_create.html'
 
 
 def post_update_view(request, pk):
