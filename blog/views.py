@@ -41,20 +41,26 @@ class PostDetailView(generic.DetailView):
 #         form = NewPostForm()
 #     return render(request, 'blog/post_create.html', context={'form': form})
 
-
+# class-based view for post_create_view method
 class PostCreateView(generic.CreateView):
     model = Post
     form_class = NewPostForm  # no () as we need a class not an object
     template_name = 'blog/post_create.html'
 
 
-def post_update_view(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    form = NewPostForm(request.POST or None, instance=post)
-    if form.is_valid():
-        form.save()
-        return redirect('posts_list')
-    return render(request, 'blog/post_create.html', context={'form': form})
+# def post_update_view(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     form = NewPostForm(request.POST or None, instance=post)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('posts_list')
+#     return render(request, 'blog/post_create.html', context={'form': form})
+
+# class-based view for post_update_view method
+class PostUpdateView(generic.UpdateView):
+    form_class = NewPostForm
+    template_name = 'blog/post_create.html'
+    model = Post
 
 
 def post_delete_view(request, pk):
