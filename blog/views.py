@@ -10,7 +10,7 @@ from django.views import generic
 #     posts_list = Post.objects.filter(status='pub').order_by('-datetime_modified')
 #     return render(request, 'blog/posts_list.html', {'posts_list': posts_list})
 
-# class based view for post_list_view method
+# class-based view for post_list_view method
 class PostListView(generic.ListView):
     model = Post
     template_name = 'blog/posts_list.html'
@@ -20,9 +20,15 @@ class PostListView(generic.ListView):
         return Post.objects.filter(status='pub').order_by('datetime_modified')
 
 
-def post_detail_view(request, pk):
-    sample_post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': sample_post})
+# def post_detail_view(request, pk):
+#     sample_post = get_object_or_404(Post, pk=pk)
+#     return render(request, 'blog/post_detail.html', {'post': sample_post})
+
+# class-based view for post_detail_view method
+class PostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'post'
 
 
 def post_create_view(request):
