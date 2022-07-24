@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Shahrzad Javadi Koushesh</a>
+            <a class="navbar-brand" href="#">Weblog to share your posts</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,13 @@
                     <a class="nav-link" href="{% url 'post_create' %}">Add New Post</a>
                 </div>
             </div>
-            <div class="mx-2 text-white">Welcome</div>
+            <div class="mx-2 text-white">
+                {% if user.is_authenticated %}
+                    Welcome {{ user.username }}
+                {% else %}
+                    <a class="text-light" href="{% url 'login' %}">Click to Log In</a>
+                {% endif %}
+            </div>
         </div>
     </nav>
 
